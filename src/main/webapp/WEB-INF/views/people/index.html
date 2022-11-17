@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Все люди</title>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>History number</th>
+    <th></th>
+
+  </tr>
+  <tr th:each="person : ${people}">
+    <td th:text="${person.getId()}">ID</td>
+    <td th:text="${person.getName()}">NAME</td>
+    <td th:text="${person.getHistoryNumber()}">HISTORY NUMBER</td>
+    <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="SHOW">user</a></td>
+
+  </tr>
+</table>
+
+<br/>
+<hr/>
+
+
+<div th:each="person : ${people}">
+      <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/people/new">Create new person</a>
+
+</body>
+</html>
