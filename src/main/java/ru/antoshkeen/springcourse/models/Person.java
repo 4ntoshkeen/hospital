@@ -1,30 +1,40 @@
 package ru.antoshkeen.springcourse.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.util.List;
+
 public class Person {
     private int id;
     private String operationDate;
-    private boolean cito;
+    private String cito;
+
+
     private String timeStart;
     private String timeFinish;
-    private String name;
 
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 3, max = 100, message = "Name should be between 3 and 100 characters")
+    private String name;
     private String region;
     private String birthday;
     private String department;
     private int historyNumber;
     private String timeDose;
+
+
+    @Min(value = 0, message = "This value should be greater than 0")
     private int dose;
+
+    @Min(value = 0, message = "This value should be greater than 0")
     private int stents;
-    private boolean elevation;
-
-
-    public Person() {
-        // Just an empty constructor
-    }
+    private String elevation;
+   // private List<Operation> operationList;
 
     public Person(int id,
                   String operationDate,
-                  boolean cito,
+                  String cito,
                   String timeStart,
                   String timeFinish,
                   String name,
@@ -35,7 +45,7 @@ public class Person {
                   String timeDose,
                   int dose,
                   int stents,
-                  boolean elevation) {
+                  String elevation) {
         this.id = id;
         this.operationDate = operationDate;
         this.cito = cito;
@@ -50,6 +60,20 @@ public class Person {
         this.dose = dose;
         this.stents = stents;
         this.elevation = elevation;
+       // this.operationList = operationList;
+    }
+
+   /* public List<Operation> getOperationList() {
+        return operationList;
+    }
+
+    public void setOperationList(List<Operation> operationList) {
+        this.operationList = operationList;
+    }*/
+
+
+    public Person() {
+        // Just an empty constructor
     }
 
     public int getId() {
@@ -68,11 +92,11 @@ public class Person {
         this.operationDate = operationDate;
     }
 
-    public boolean getCito() {
+    public String getCito() {
         return cito;
     }
 
-    public void setCito(boolean cito) {
+    public void setCito(String cito) {
         this.cito = cito;
     }
 
@@ -156,11 +180,11 @@ public class Person {
         this.stents = stents;
     }
 
-    public boolean getElevation() {
+    public String getElevation() {
         return elevation;
     }
 
-    public void setElevation(boolean elevation) {
+    public void setElevation(String elevation) {
         this.elevation = elevation;
     }
 }

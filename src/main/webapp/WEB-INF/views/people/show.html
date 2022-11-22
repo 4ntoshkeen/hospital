@@ -2,16 +2,36 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Человек</title>
+    <title>Show</title>
 </head>
 <body>
-<p th:text="${person.getName()}">VALUE</p>
-<p th:text="${person.getId()}">VALUE</p>
+<p th:text="${person.getOperationDate()}">NAME</p>
+<p th:text="${person.getCito()}">NAME</p>
+<p th:text="${person.getTimeStart()}">NAME</p>
+<p th:text="${person.getTimeFinish()}">NAME</p>
+<p th:text="${person.getName()}">NAME</p>
+<p th:text="${person.getRegion()}">NAME</p>
+<p th:text="${person.getBirthday()}">NAME</p>
+<p th:text="${person.getDepartment()}">NAME</p>
+<p th:text="${person.getHistoryNumber()}">NAME</p>
+<p th:text="${person.getTimeDose()}">NAME</p>
+<p th:text="${person.getDose()}">NAME</p>
+<p th:text="${person.getStents()}">NAME</p>
+<p th:text="${person.getElevation()}">NAME</p>
+<br/>
 
+<hr/>
+    <!--<p th:each="operation : ${person.operationList}">
+        <span th:text="${operation.id}">ID</span>
+        <span th:text="${operation.name}">OPERATION NAME</span>
+        <span th:text="${operation.type}">TYPE</span>
+    </p>-->
+
+<br/>
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
 
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
+
+
+
 </body>
 </html>
