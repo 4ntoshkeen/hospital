@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.antoshkeen.springcourse.dao.PersonDAO;
 import ru.antoshkeen.springcourse.models.Person;
-
 import javax.validation.Valid;
 
 @Controller
@@ -67,5 +66,4 @@ public class PeopleController {
         personDAO.delete(id);
         return "redirect:/people";
     }
-
 }

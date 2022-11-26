@@ -1,18 +1,27 @@
 package ru.antoshkeen.springcourse.models;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Operation {
-    public Operation(int id, String name, String type) {
-        this.id = id;
+
+    private int id;
+    @NotEmpty(message = "This field can't be empty")
+    @Size(min = 2, max = 100, message = "Check size of 'Name'")
+    private String name;
+    private String type;
+    private String description;
+
+
+    public Operation(String name, String type, String description) {
         this.name = name;
         this.type = type;
+        this.description = description;
     }
 
     public Operation() {
-    }
 
-    private int id;
-    private String name;
-    private String type;
+    }
 
     public int getId() {
         return id;
@@ -36,5 +45,13 @@ public class Operation {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

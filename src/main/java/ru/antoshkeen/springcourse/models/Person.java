@@ -1,38 +1,61 @@
 package ru.antoshkeen.springcourse.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+@Entity
+@Table(name = "Person")
 public class Person {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "operationDate")
     private String operationDate;
+
+    @Column(name = "cito")
     private String cito;
 
 
+    @Column(name = "timeStart")
     private String timeStart;
+    @Column(name = "timeFinish")
     private String timeFinish;
 
+    @Column(name = "name")
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 3, max = 100, message = "Name should be between 3 and 100 characters")
     private String name;
+    @Column(name = "region")
     private String region;
+
+    @Column(name = "birthday")
     private String birthday;
+
+    @Column(name = "department")
     private String department;
+
+    @Column(name = "historyNumber")
     private int historyNumber;
+    @Column(name = "timeDose")
     private String timeDose;
 
-
+    @Column(name = "dose")
     @Min(value = 0, message = "This value should be greater than 0")
     private int dose;
-
+    @Column(name = "stents")
     @Min(value = 0, message = "This value should be greater than 0")
     private int stents;
+
+    @Column(name = "elevation")
     private String elevation;
    // private List<Operation> operationList;
 
-    public Person(int id,
+    public Person(
                   String operationDate,
                   String cito,
                   String timeStart,
@@ -46,7 +69,6 @@ public class Person {
                   int dose,
                   int stents,
                   String elevation) {
-        this.id = id;
         this.operationDate = operationDate;
         this.cito = cito;
         this.timeStart = timeStart;
