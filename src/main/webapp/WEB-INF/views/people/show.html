@@ -18,19 +18,31 @@
 <p th:text="${person.getDose()}">NAME</p>
 <p th:text="${person.getStents()}">NAME</p>
 <p th:text="${person.getElevation()}">NAME</p>
+
 <br/>
+<hr/>
+
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    <tr th:each="tool : ${tools}">
+        <td th:text="${tool.getType()}">type</td>
+        <td th:text="${tool.getName()}">name</td>
+        <td th:text="${tool.getSize()}">size</td>
+        <td th:text="${tool.getQuantity()}">quantity</td>
+    </tr>
+</table>
 
 <hr/>
-    <!--<p th:each="operation : ${person.operationList}">
-        <span th:text="${operation.id}">ID</span>
-        <span th:text="${operation.name}">OPERATION NAME</span>
-        <span th:text="${operation.type}">TYPE</span>
-    </p>-->
 
-<br/>
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
 
-
+<br/>
+<hr/>
 
 
 </body>

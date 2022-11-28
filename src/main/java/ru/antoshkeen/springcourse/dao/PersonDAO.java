@@ -1,19 +1,12 @@
 package ru.antoshkeen.springcourse.dao;
 
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.jdbc.core.BeanPropertyRowMapper;
-//import org.springframework.jdbc.core.JdbcTemplate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-import ru.antoshkeen.springcourse.models.Person;
+
 
 import java.util.List;
 
 @Component
-public class PersonDAO {
+public class PersonDAO {/*
 
     private final SessionFactory sessionFactory;
 
@@ -23,13 +16,13 @@ public class PersonDAO {
     }
 
 
-/*
+*//*
    private final JdbcTemplate jdbcTemplate;
 
   @Autowired
     public PersonDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }*/
+    }*//*
 
     @Transactional(readOnly = true)
     public List<Person> index() {
@@ -42,15 +35,15 @@ public class PersonDAO {
     public Person show(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Person.class, id);
-        /*return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
-                .stream().findAny().orElse(null);*/
+        *//*return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
+                .stream().findAny().orElse(null);*//*
     }
 
     @Transactional
     public void save(Person person) {
         Session session = sessionFactory.getCurrentSession();
         session.save(person);
-        /*jdbcTemplate.update(
+        *//*jdbcTemplate.update(
                 "INSERT INTO Person(operationdate, cito, timestart, timefinish, name, region, birthday, department, historynumber, timedose, dose, stents, elevation) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 person.getOperationDate(),
                 person.getCito(),
@@ -65,7 +58,7 @@ public class PersonDAO {
                 person.getDose(),
                 person.getStents(),
                 person.getElevation()
-        );*/
+        );*//*
     }
 
     @Transactional
@@ -88,7 +81,7 @@ public class PersonDAO {
         personToBeUpdated.setDose(updatedPerson.getDose());
         personToBeUpdated.setStents(updatedPerson.getStents());
         personToBeUpdated.setElevation(updatedPerson.getElevation());
-        /*jdbcTemplate.update("UPDATE Person SET operationdate=?, cito=?, timestart=?, timefinish=?, name=?, region=?, birthday=?, department=?, historynumber=?, timedose=?, dose=?, stents=?, elevation=? WHERE id=?",
+        *//*jdbcTemplate.update("UPDATE Person SET operationdate=?, cito=?, timestart=?, timefinish=?, name=?, region=?, birthday=?, department=?, historynumber=?, timedose=?, dose=?, stents=?, elevation=? WHERE id=?",
                 updatedPerson.getOperationDate(),
                 updatedPerson.getCito(),
                 updatedPerson.getTimeStart(),
@@ -103,7 +96,7 @@ public class PersonDAO {
                 updatedPerson.getStents(),
                 updatedPerson.getElevation(),
                 id
-        );*/
+        );*//*
     }
 
     @Transactional
@@ -117,7 +110,7 @@ public class PersonDAO {
 
 
 
-    /*public void testMultipleUpdate() {
+    *//*public void testMultipleUpdate() {
         List<Person> people = create1000People();
     }
 

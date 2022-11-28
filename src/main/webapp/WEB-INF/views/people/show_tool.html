@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show tool</title>
+</head>
+<body>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Size</th>
+            <th></th>
+        </tr>
+        <tr th:each="tool : ${tools}">
+            <td th:text="${tool.getName()}">name</td>
+            <td th:text="${tool.getType()}">type</td>
+            <td th:text="${tool.getQuantity()}">quantity</td>
+            <td th:text="${tool.getSize()}">size</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+</body>
+</html>

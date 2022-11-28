@@ -13,20 +13,15 @@ public class Person {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "operationDate")
     private String operationDate;
-
     @Column(name = "cito")
     private String cito;
-
-
     @Column(name = "timeStart")
     private String timeStart;
     @Column(name = "timeFinish")
     private String timeFinish;
-
-    @Column(name = "name")
+    @Column(name = "personname")
     @NotEmpty(message = "Name should not be empty")
     @Size(min = 3, max = 100, message = "Name should be between 3 and 100 characters")
     private String name;
@@ -53,10 +48,48 @@ public class Person {
 
     @Column(name = "elevation")
     private String elevation;
-   // private List<Operation> operationList;
 
-    public Person(
-                  String operationDate,
+    @Column(name = "operatordoc")
+    @Enumerated(EnumType.STRING)
+    private Operator operator;
+
+    @Column(name = "assistant")
+    @Enumerated(EnumType.STRING)
+    private Assistant assistant;
+
+    @Column(name = "operNurse")
+    @Enumerated(EnumType.STRING)
+    private OperNurse operNurse;
+
+    @Column(name = "nurse")
+    @Enumerated(EnumType.STRING)
+    private Nurse nurse;
+
+    @Column(name = "laboratorian")
+    @Enumerated(EnumType.STRING)
+    private Laboratorian laboratorian;
+
+    @Column(name = "anesthesiologistDoc")
+    @Enumerated(EnumType.STRING)
+    private AnesthesiologistDoc anesthesiologistDoc;
+
+    @Column(name = "anesthesiologistNurse")
+    @Enumerated(EnumType.STRING)
+    private AnesthesiologistNurse anesthesiologistNurse;
+
+    @Column(name = "cardiologist")
+    @Enumerated(EnumType.STRING)
+    private Cardiologist cardiologist;
+
+
+
+
+    @OneToMany(mappedBy = "owner")
+    private List<Tool> tools;
+
+
+
+    public Person(String operationDate,
                   String cito,
                   String timeStart,
                   String timeFinish,
@@ -68,7 +101,15 @@ public class Person {
                   String timeDose,
                   int dose,
                   int stents,
-                  String elevation) {
+                  String elevation,
+                  Operator operator,
+                  Assistant assistant,
+                  OperNurse operNurse,
+                  Nurse nurse,
+                  Laboratorian laboratorian,
+                  AnesthesiologistDoc anesthesiologistDoc,
+                  AnesthesiologistNurse anesthesiologistNurse,
+                  Cardiologist cardiologist, List<Tool> tools) {
         this.operationDate = operationDate;
         this.cito = cito;
         this.timeStart = timeStart;
@@ -82,17 +123,16 @@ public class Person {
         this.dose = dose;
         this.stents = stents;
         this.elevation = elevation;
-       // this.operationList = operationList;
+        this.operator = operator;
+        this.assistant = assistant;
+        this.operNurse = operNurse;
+        this.nurse = nurse;
+        this.laboratorian = laboratorian;
+        this.anesthesiologistDoc = anesthesiologistDoc;
+        this.anesthesiologistNurse = anesthesiologistNurse;
+        this.cardiologist = cardiologist;
+        this.tools = tools;
     }
-
-   /* public List<Operation> getOperationList() {
-        return operationList;
-    }
-
-    public void setOperationList(List<Operation> operationList) {
-        this.operationList = operationList;
-    }*/
-
 
     public Person() {
         // Just an empty constructor
@@ -208,5 +248,77 @@ public class Person {
 
     public void setElevation(String elevation) {
         this.elevation = elevation;
+    }
+
+    public Operator getOperator() {
+        return operator;
+    }
+
+    public void setOperator(Operator operator) {
+        this.operator = operator;
+    }
+
+    public Assistant getAssistant() {
+        return assistant;
+    }
+
+    public void setAssistant(Assistant assistant) {
+        this.assistant = assistant;
+    }
+
+    public OperNurse getOperNurse() {
+        return operNurse;
+    }
+
+    public void setOperNurse(OperNurse operNurse) {
+        this.operNurse = operNurse;
+    }
+
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+
+    public Laboratorian getLaboratorian() {
+        return laboratorian;
+    }
+
+    public void setLaboratorian(Laboratorian laboratorian) {
+        this.laboratorian = laboratorian;
+    }
+
+    public AnesthesiologistDoc getAnesthesiologistDoc() {
+        return anesthesiologistDoc;
+    }
+
+    public void setAnesthesiologistDoc(AnesthesiologistDoc anesthesiologistDoc) {
+        this.anesthesiologistDoc = anesthesiologistDoc;
+    }
+
+    public AnesthesiologistNurse getAnesthesiologistNurse() {
+        return anesthesiologistNurse;
+    }
+
+    public void setAnesthesiologistNurse(AnesthesiologistNurse anesthesiologistNurse) {
+        this.anesthesiologistNurse = anesthesiologistNurse;
+    }
+
+    public Cardiologist getCardiologist() {
+        return cardiologist;
+    }
+
+    public void setCardiologist(Cardiologist cardiologist) {
+        this.cardiologist = cardiologist;
+    }
+
+    public List<Tool> getTools() {
+        return tools;
+    }
+
+    public void setTools(List<Tool> tools) {
+        this.tools = tools;
     }
 }
